@@ -3,7 +3,6 @@ require "http"
 api_key = 
 
 while true
-  system "clear"
   puts "Enter a word: (enter 'q' to quit)"
   user_input = gets.chomp
   if user_input == "q"
