@@ -6,19 +6,17 @@
 
 input = File.open('./weather.dat', File::RDONLY){|f| f.read }
 array = input.lines.map{|l| l.split.map(&:to_f) }
-p array[2][1]
-p array[2][2]
-spread = array[2][1] - array[2][2]
-p spread
 
-# i = 0
-# while i < days.length - 1
-#   if (days[i][:max] - days[i][:min]) < (days[i+1][:max] - days[i+1][:min])
-#     minimum_spread = days[i][:day]
-#   else
-#     minimum_spread = days[i+1][:day]
-#   end
-#   i += 1
-# end
+min_spread = 100000
+i = 2
+while i < array.length 
+  spread = (array[i][1]) - (array[i][2])
+  if spread < min_spread
+    min_spread = spread
+    day = array[i][0]
+  end
+  i += 1
+end
 
-# p minimum_spread
+puts min_spread
+puts day
